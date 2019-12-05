@@ -14,6 +14,7 @@
         <module>serve-admin</module>
         <module>serve-common</module>
         <module>serve-sys</module>
+        <module>serve-gateway</module>
     </modules>
 
     <name>lzlm</name>
@@ -91,6 +92,7 @@
                 <eureka.port>9601</eureka.port>
                 <admin.port>9602</admin.port>
                 <serve.sys.port>9701</serve.sys.port>
+                <serve.gateway.port>9801</serve.gateway.port>
                 <eureka.url>http://localhost:9601/eureka/</eureka.url>
                 <admin.url>http://localhost:9602</admin.url>
 

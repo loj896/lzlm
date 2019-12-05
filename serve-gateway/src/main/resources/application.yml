@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: serve-gateway
+  boot:
+    admin:
+      client:
+        url: @admin.url@
+server:
+  port: @serve.gateway.port@
+eureka:
+  client:
+    service-url:
+      # Eureka注册中心连接地址
+      # 如果注册中心地址配置的域名，这里使用 http://域名/eureka/ 格式
+      defaultZone: @eureka.url@
+
