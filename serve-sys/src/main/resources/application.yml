@@ -37,3 +37,8 @@ eureka:
       # 如果注册中心地址配置的域名，这里使用 http://域名/eureka/ 格式
       defaultZone: @eureka.url@
 
+logging:
+  level:
+    root: info
+    com.lzlm.cn: debug
+

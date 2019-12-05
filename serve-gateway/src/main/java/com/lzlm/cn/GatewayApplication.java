@@ -2,7 +2,7 @@ package com.lzlm.cn;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /***
  *                    .::::. 
@@ -24,7 +24,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * ```` ':.          ':::::::::'                  ::::.. 
  *                    '.:::::'                    ':'````.. 
  */
-@EnableEurekaClient  //Eureka客户端（服务网关）
+@EnableDiscoveryClient  //服务消费者（服务网关）
 @SpringBootApplication
 public class GatewayApplication {
 

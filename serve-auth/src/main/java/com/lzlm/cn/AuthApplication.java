@@ -3,6 +3,8 @@ package com.lzlm.cn;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /***
  *                    .::::. 
@@ -24,7 +26,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * ```` ':.          ':::::::::'                  ::::.. 
  *                    '.:::::'                    ':'````.. 
  */
-@EnableDiscoveryClient //服务消费者
+@EnableDiscoveryClient  //服务消费者
+@EnableFeignClients     //熔断器
+@EnableHystrixDashboard //熔断器监控
 @SpringBootApplication
 public class AuthApplication {
 

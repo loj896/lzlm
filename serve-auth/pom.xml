@@ -15,6 +15,12 @@
     <packaging>jar</packaging>
 
     <dependencies>
+        <!--引入公共模块-->
+        <dependency>
+            <groupId>com.lzlm.cn</groupId>
+            <artifactId>serve-common</artifactId>
+            <version>1.0</version>
+        </dependency>
         <!--Eureka-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -24,6 +30,16 @@
         <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-client</artifactId>
+        </dependency>
+        <!--调用其它服务，内置了 Hystrix 熔断器-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <!--熔断监控-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
         </dependency>
     </dependencies>
 

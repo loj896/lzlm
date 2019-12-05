@@ -5,6 +5,11 @@ spring:
     admin:
       client:
         url: @admin.url@
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.105.161.199:3306/mydb?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true
+    username: @db.user@
+    password: @db.pwd@
 server:
   port: @serve.auth.port@
 eureka:
@@ -13,4 +18,8 @@ eureka:
       # Eureka注册中心连接地址
       # 如果注册中心地址配置的域名，这里使用 http://域名/eureka/ 格式
       defaultZone: @eureka.url@
+feign:
+  hystrix:
+    # 开启Feign的Hystrix熔断器支持
+    enabled: true
 

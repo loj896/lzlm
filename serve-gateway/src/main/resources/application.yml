@@ -5,6 +5,19 @@ spring:
     admin:
       client:
         url: @admin.url@
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+#      routes:
+#      - id: host_route
+#        uri: http://localhost:9801
+#        predicates:
+#        - Path=/lzlm/**
+#        filters:
+#        - StripPrefix=1
+
 server:
   port: @serve.gateway.port@
 eureka:
@@ -13,4 +26,8 @@ eureka:
       # Eureka注册中心连接地址
       # 如果注册中心地址配置的域名，这里使用 http://域名/eureka/ 格式
       defaultZone: @eureka.url@
+loggin:
+  level:
+    root: info
+    com.lzlm.cn: debug
 
