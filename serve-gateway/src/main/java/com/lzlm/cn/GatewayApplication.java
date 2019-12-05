@@ -24,7 +24,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * ```` ':.          ':::::::::'                  ::::.. 
  *                    '.:::::'                    ':'````.. 
  */
-@EnableEurekaClient
+@EnableEurekaClient  //Eureka客户端（服务网关）
 @SpringBootApplication
 public class GatewayApplication {
 

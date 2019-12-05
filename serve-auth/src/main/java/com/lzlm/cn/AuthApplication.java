@@ -2,14 +2,14 @@ package com.lzlm.cn;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /***
  *                    .::::. 
  *                  .::::::::. 
  *                 :::::::::::        @author liuhai
- *             ..:::::::::::'         @date 2019-12-05 14:58
- *           '::::::::::::'           @description 注册中心
+ *             ..:::::::::::'         @date 2019-12-05 17:00
+ *           '::::::::::::'           @description 鉴权认证
  *             .:::::::::: 
  *        '::::::::::::::.. 
  *             ..::::::::::::. 
@@ -24,11 +24,11 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
  * ```` ':.          ':::::::::'                  ::::.. 
  *                    '.:::::'                    ':'````.. 
  */
-@EnableEurekaServer  //Eureka服务端（注册中心）
+@EnableDiscoveryClient //服务消费者
 @SpringBootApplication
-public class EurekaApplication {
+public class AuthApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(EurekaApplication.class, args);
+        SpringApplication.run(AuthApplication.class, args);
     }
 }

@@ -25,8 +25,8 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * ```` ':.          ':::::::::'                  ::::.. 
  *                    '.:::::'                    ':'````.. 
  */
-@EnableAdminServer
-@EnableEurekaClient
+@EnableAdminServer   //监控
+@EnableEurekaClient  //Eureka客户端（服务监控）
 @SpringBootApplication
 public class AdminApplication {
 
