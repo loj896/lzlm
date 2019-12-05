@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lzlm.cn.dao.user.UserRoleRelMapper" >
+  <resultMap id="BaseResultMap" type="com.lzlm.cn.model.user.UserRoleRel" >
+    <id column="user_role_id" property="userRoleId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="role_id" property="roleId" jdbcType="VARCHAR" />
+    <result column="rel_state" property="relState" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    user_role_id, user_id, role_id, rel_state
+  </sql>
+
+  <select id="getUserRole" resultType="com.lzlm.cn.dto.user.UserRoleDto">
+    select urr.user_role_id,urr.user_id,r.role_id,r.role_name
+    from t_user_role_rel urr
+    left join t_role r on (urr.role_id = r.role_id)
+    where urr.rel_state = '1' and r.role_state = '1'
+    and urr.user_id = #{userId}
+  </select>
+
+</mapper>

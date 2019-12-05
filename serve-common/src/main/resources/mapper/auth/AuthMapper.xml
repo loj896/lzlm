@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lzlm.cn.dao.auth.AuthMapper" >
+  <resultMap id="BaseResultMap" type="com.lzlm.cn.model.auth.Auth" >
+    <id column="auth_id" property="authId" jdbcType="VARCHAR" />
+    <result column="auth_code" property="authCode" jdbcType="VARCHAR" />
+    <result column="auth_name" property="authName" jdbcType="VARCHAR" />
+    <result column="auth_pcode" property="authPcode" jdbcType="VARCHAR" />
+    <result column="is_leaf" property="isLeaf" jdbcType="INTEGER" />
+    <result column="auth_state" property="authState" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    auth_id, auth_code, auth_name, auth_pcode, is_leaf, auth_state
+  </sql>
+
+</mapper>

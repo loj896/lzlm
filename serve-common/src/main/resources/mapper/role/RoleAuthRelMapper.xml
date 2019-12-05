@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lzlm.cn.dao.role.RoleAuthRelMapper" >
+  <resultMap id="BaseResultMap" type="com.lzlm.cn.model.role.RoleAuthRel" >
+    <id column="role_auth_id" property="roleAuthId" jdbcType="VARCHAR" />
+    <result column="role_id" property="roleId" jdbcType="VARCHAR" />
+    <result column="auth_id" property="authId" jdbcType="VARCHAR" />
+    <result column="rel_state" property="relState" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    role_auth_id, role_id, auth_id, rel_state
+  </sql>
+
+  <select id="getAuthByRoleId" resultType="com.lzlm.cn.dto.role.RoleAuthDto">
+    select ra.role_id,a.auth_id,a.auth_code,a.auth_name,a.auth_pcode,a.is_leaf
+    from t_auth a left join t_role_auth_rel ra on (a.auth_id = ra.auth_id)
+    where ra.rel_state = '1' and a.auth_state = '1' and ra.role_id = #{roleId}
+  </select>
+
+</mapper>

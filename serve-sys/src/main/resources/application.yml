@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: serve-sys
+  boot:
+    admin:
+      client:
+        url: @admin.url@
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.105.161.199:3306/mydb?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true
+    username: @db.user@
+    password: @db.pwd@
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*.xml
+  type-aliases-package: com.lzlm.cn.model.*.*
+  global-config:
+    db-config:
+      db-type: mysql
+      id-type: uuid
+      field-strategy: not_null
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      table-underline: true
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    call-setters-on-nulls: true
+
+server:
+  port: @serve.sys.port@
+
+eureka:
+  client:
+    service-url:
+      # Eureka注册中心连接地址
+      # 如果注册中心地址配置的域名，这里使用 http://域名/eureka/ 格式
+      defaultZone: @eureka.url@
+

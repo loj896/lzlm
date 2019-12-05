@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lzlm.cn.dao.user.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.lzlm.cn.model.user.User" >
+    <id column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="level_code" property="levelCode" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="real_name" property="realName" jdbcType="VARCHAR" />
+    <result column="user_status" property="userStatus" jdbcType="VARCHAR" />
+    <result column="add_date" property="addDate" jdbcType="TIMESTAMP" />
+    <result column="upt_date" property="uptDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    user_id, user_name, level_code, password,real_name,user_status,add_date,upt_date
+  </sql>
+
+  <select id="getUserAuth" resultType="com.lzlm.cn.dto.user.UserAuthDto">
+    select urr.user_id,r.role_id,r.role_name,a.auth_id,a.auth_code,a.auth_name,a.auth_pcode,a.is_leaf
+    from t_auth a
+    left join t_role_auth_rel rar on (rar.auth_id = a.auth_id)
+    left join t_role r on (rar.role_id = r.role_id)
+    left join t_user_role_rel urr on (urr.role_id = r.role_id)
+    where a.auth_state = '1' and rar.rel_state = '1' and r.role_state = '1' and urr.rel_state = '1'
+    and urr.user_id = #{userId, jdbcType=VARCHAR}
+  </select>
+
+</mapper>

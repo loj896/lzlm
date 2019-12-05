@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: serve-admin
+server:
+  port: @admin.port@
+eureka:
+  client:
+    service-url:
+      # Eureka注册中心连接地址
+      # 如果注册中心地址配置的域名，这里使用 http://域名/eureka/ 格式
+      defaultZone: @eureka.url@
+# admin
+management:
+  endpoint:
+    health:
+      show-details: ALWAYS
+  endpoints:
+    web:
+      exposure:
+        include: "*" # health,info

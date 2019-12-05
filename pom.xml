@@ -6,7 +6,102 @@
 
     <groupId>com.lzlm.cn</groupId>
     <artifactId>lzlm</artifactId>
+    <packaging>pom</packaging>
     <version>1.0</version>
+
+    <modules>
+        <module>serve-eureka</module>
+        <module>serve-admin</module>
+        <module>serve-common</module>
+        <module>serve-sys</module>
+    </modules>
+
+    <name>lzlm</name>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.5.RELEASE</version>
+    </parent>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
+        <zipkin.version>2.10.1</zipkin.version>
+        <spring-boot-admin.version>2.1.5</spring-boot-admin.version>
+        <!--打包时跳过测试类-->
+        <maven.test.skip>true</maven.test.skip>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <!--spring cloud-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--admin-->
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-server</artifactId>
+                <version>${spring-boot-admin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-client</artifactId>
+                <version>${spring-boot-admin.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <!--配置可读取yml文件中的变量-->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!--多环境配置-->
+    <profiles>
+        <!--开发环境-->
+        <profile>
+            <id>dev</id>
+            <properties>
+                <current.active.profile>dev</current.active.profile>
+                <eureka.port>9601</eureka.port>
+                <admin.port>9602</admin.port>
+                <serve.sys.port>9701</serve.sys.port>
+                <eureka.url>http://localhost:9601/eureka/</eureka.url>
+                <admin.url>http://localhost:9602</admin.url>
+
+                <db.user>amei</db.user>
+                <db.pwd>PWD</db.pwd>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+    </profiles>
 
 
 </project>
