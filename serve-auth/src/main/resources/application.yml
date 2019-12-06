@@ -1,6 +1,12 @@
 spring:
   application:
     name: serve-auth
+  zipkin:
+    # base-url: @zipkin.url@  #若在同一个注册中心的话可以启用自动发现，省略base-url
+    locator:
+      discovery:
+        enabled: true #自动发现
+
   boot:
     admin:
       client:

@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: serve-zipkin
+  main:
+    allow-bean-definition-overriding: true
+  boot:
+    admin:
+      client:
+        url: @admin.url@
+
+server:
+  port: @zipkin.port@
+
+eureka:
+  client:
+    service-url:
+      # Eureka注册中心连接地址
+      # 如果注册中心地址配置的域名，这里使用 http://域名/eureka/ 格式
+      defaultZone: @eureka.url@
+
+management:
+  metrics:
+    web:
+      # 解决Zipkin报错IllegalArgumentException: Prometheus requires that all meters
+      server:
+        auto-time-requests: false
+

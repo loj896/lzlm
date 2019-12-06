@@ -16,6 +16,7 @@
         <module>serve-sys</module>
         <module>serve-gateway</module>
         <module>serve-auth</module>
+        <module>serve-zipkin</module>
     </modules>
 
     <name>lzlm</name>
@@ -65,6 +66,22 @@
                 <artifactId>spring-boot-admin-starter-client</artifactId>
                 <version>${spring-boot-admin.version}</version>
             </dependency>
+            <!--zipkin-->
+            <dependency>
+                <groupId>io.zipkin.java</groupId>
+                <artifactId>zipkin</artifactId>
+                <version>${zipkin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.zipkin.java</groupId>
+                <artifactId>zipkin-server</artifactId>
+                <version>${zipkin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.zipkin.java</groupId>
+                <artifactId>zipkin-autoconfigure-ui</artifactId>
+                <version>${zipkin.version}</version>
+            </dependency>
             <!--定义公共模块-->
             <dependency>
                 <groupId>com.lzlm.cn</groupId>
@@ -81,13 +98,19 @@
             <id>dev</id>
             <properties>
                 <current.active.profile>dev</current.active.profile>
+
                 <eureka.port>9601</eureka.port>
-                <admin.port>9602</admin.port>
+                <eureka.url>http://localhost:9601/eureka/</eureka.url>
+
+                <zipkin.port>9602</zipkin.port>
+                <zipkin.url>http://localhost:9602</zipkin.url>
+
+                <admin.port>9603</admin.port>
+                <admin.url>http://localhost:9603</admin.url>
+
                 <serve.sys.port>9701</serve.sys.port>
                 <serve.auth.port>9801</serve.auth.port>
                 <serve.gateway.port>9901</serve.gateway.port>
-                <eureka.url>http://localhost:9601/eureka/</eureka.url>
-                <admin.url>http://localhost:9602</admin.url>
 
                 <db.user>amei</db.user>
                 <db.pwd>PWD</db.pwd>

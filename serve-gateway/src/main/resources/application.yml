@@ -1,23 +1,31 @@
 spring:
   application:
     name: serve-gateway
+  zipkin:
+    # base-url: @zipkin.url@  #若在同一个注册中心的话可以启用自动发现，省略base-url
+    locator:
+      discovery:
+        enabled: true #自动发现
+  sleuth:
+    sampler:
+      percentage: 1.0
   boot:
     admin:
       client:
         url: @admin.url@
   cloud:
     gateway:
-      discovery:
-        locator:
-          enabled: true
-          lower-case-service-id: true
+#      discovery:
+#        locator:
+#          enabled: true
+#          lower-case-service-id: true
       routes:
-      - id: host_route
-        uri: http://www.baidu.com #lb://SERVE-AUTH
-        predicates:
-        - Path=/lzlm
-#        filters:
-#        - StripPrefix=1
+        - id: lzlm_route
+          uri: lb://serve-auth
+          predicates:
+          - Path=/lzlm/**
+          filters:
+          - StripPrefix=1
 server:
   port: @serve.gateway.port@
 eureka:
