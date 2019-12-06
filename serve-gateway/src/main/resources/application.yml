@@ -10,17 +10,19 @@ spring:
       discovery:
         locator:
           enabled: true
-#      routes:
-#      - id: host_route
-#        uri: http://localhost:9801
-#        predicates:
-#        - Path=/lzlm/**
+          lower-case-service-id: true
+      routes:
+      - id: host_route
+        uri: http://www.baidu.com #lb://SERVE-AUTH
+        predicates:
+        - Path=/lzlm
 #        filters:
 #        - StripPrefix=1
-
 server:
   port: @serve.gateway.port@
 eureka:
+  instance:
+    prefer-ip-address: true
   client:
     service-url:
       # Eureka注册中心连接地址

@@ -19,17 +19,6 @@
         <dependency>
             <groupId>com.lzlm.cn</groupId>
             <artifactId>serve-common</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <!--Eureka-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
-        </dependency>
-        <!--admin client-->
-        <dependency>
-            <groupId>de.codecentric</groupId>
-            <artifactId>spring-boot-admin-starter-client</artifactId>
         </dependency>
         <!--调用其它服务，内置了 Hystrix 熔断器-->
         <dependency>

@@ -31,6 +31,7 @@
         <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
         <zipkin.version>2.10.1</zipkin.version>
         <spring-boot-admin.version>2.1.5</spring-boot-admin.version>
+        <serve-common.version>1.0</serve-common.version>
         <!--打包时跳过测试类-->
         <maven.test.skip>true</maven.test.skip>
     </properties>
@@ -64,24 +65,14 @@
                 <artifactId>spring-boot-admin-starter-client</artifactId>
                 <version>${spring-boot-admin.version}</version>
             </dependency>
+            <!--定义公共模块-->
+            <dependency>
+                <groupId>com.lzlm.cn</groupId>
+                <artifactId>serve-common</artifactId>
+                <version>${serve-common.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <build>
-        <!--配置可读取yml文件中的变量-->
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
     <!--多环境配置-->
     <profiles>
