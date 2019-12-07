@@ -1,8 +1,8 @@
 # lzlm
 ## 总体情况
 项目框架使用Spring Boot + Spring Cloud ，注册中心使用Eureka，集成spring-boot-admin进行项目监控，
-添加zipkin进行全链路跟踪，使用Feign进行服务间的通讯，利用Feign集成的hystrix进行熔断，
-添加hystrix-dashboard可视化熔断监控，相关版本、依赖包及配置如下：
+添加zipkin进行全链路跟踪，使用Feign进行服务间的通讯，利用Feign集成的hystrix进行熔断处理，
+添加hystrix-dashboard可视化熔断监控，持久层框架使用mybatis plus。相关版本、依赖包及配置如下：
 
 #### <a href="#title1">1、依赖包及版本</a>
 #### <a href="#title2">2、注册中心</a>
