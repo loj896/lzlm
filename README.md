@@ -16,14 +16,14 @@
 ## 2、注册中心
 > * 模块：serve-eureka
 > * 端口：9601
-> ### 依赖包 
+### 依赖包 
 ```
 <dependency>
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 </dependency>
 ```
-> ### application.yml 配置文件
+### application.yml 配置文件
 ```
 spring:
   application:
@@ -56,7 +56,7 @@ eureka:
 ## 3、链路跟踪
 > * 模块：serve-zipkin
 > * 端口：9602
-> ### 依赖包 
+### 依赖包 
 ```
 <!--Eureka-->
 <dependency>
@@ -92,7 +92,7 @@ eureka:
     <artifactId>zipkin-autoconfigure-ui</artifactId>
 </dependency>
 ```
-> ### application.yml 配置文件
+### application.yml 配置文件
 ```
 spring:
   application:
@@ -127,7 +127,7 @@ management:
 ## 4、项目监控
 > * 模块：serve-admin
 > * 端口：9603
-> ### 依赖包 
+### 依赖包 
 ```
 <!--Eureka-->
 <dependency>
@@ -164,7 +164,7 @@ management:
     <artifactId>spring-cloud-starter-zipkin</artifactId>
 </dependency>
 ```
-> ### application.yml 配置文件
+### application.yml 配置文件
 ```
 spring:
   application:
@@ -200,7 +200,7 @@ management:
 ##
 ## 5、公共模块
 > * 模块：serve-common
-> ### 依赖包 
+### 依赖包 
 ```
 <dependency>
     <groupId>org.springframework.boot</groupId>
@@ -268,7 +268,7 @@ management:
 ## 6、系统管理服务
 > * 模块：serve-sys
 > * 端口：9701
-> ### 依赖包 
+### 依赖包 
 ```
 <!--引入公共模块-->
 <dependency>
@@ -276,7 +276,7 @@ management:
     <artifactId>serve-common</artifactId>
 </dependency>
 ```
-> ### application.yml 配置文件
+### application.yml 配置文件
 ```
 spring:
   application:
@@ -352,11 +352,12 @@ public class Swagger2 {
     }
 }
 ```
+
 ##
 ## 7、鉴权认证
 > * 模块：serve-auth
 > * 端口：9801
-> ### 依赖包 
+### 依赖包 
 ```
 <!--引入公共模块-->
 <dependency>
@@ -374,7 +375,7 @@ public class Swagger2 {
     <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
 </dependency>
 ```
-> ### application.yml 配置文件
+### application.yml 配置文件
 ```
 spring:
   application:
@@ -458,7 +459,7 @@ public class Swagger2 {
 ## 8、服务网关
 > * 模块：serve-gateway
 > * 端口：9901
-> ### 依赖包 
+### 依赖包 
 ```
 <!--Eureka-->
 <dependency>
@@ -481,7 +482,7 @@ public class Swagger2 {
     <artifactId>spring-cloud-starter-zipkin</artifactId>
 </dependency>
 ```
-> ### application.yml 配置文件
+### application.yml 配置文件
 ```
 spring:
   application:
