@@ -1,7 +1,7 @@
 # lzlm
 ## 1、依赖包及版本
-> | 名称  | 版本  |
-> | --- | --- |
+| 名称  | 版本  |
+| --- | --- |
 | Spring Boot| 2.1.5.RELEASE |
 | Spring Cloud| Greenwich.SR1 |
 | zipkin | 2.10.1 |
