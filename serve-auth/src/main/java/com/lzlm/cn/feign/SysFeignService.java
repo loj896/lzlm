@@ -1,6 +1,7 @@
 package com.lzlm.cn.feign;
 
 import com.lzlm.cn.dto.auth.AddAuthDto;
+import com.lzlm.cn.dto.auth.SelAuthClientDto;
 import com.lzlm.cn.dto.user.AddUserRoleDto;
 import com.lzlm.cn.dto.user.LoginDto;
 import com.lzlm.cn.feign.fallback.SysFeignServiceFallImpl;
@@ -76,6 +77,14 @@ public interface SysFeignService {
      */
     @PostMapping("/sys/auth/addAuth")
     CommonResult addAuth(@RequestBody @Validated List<AddAuthDto> authDtoList);
+
+    /**
+     * 查询权限认证信息
+     * @param clientDto
+     * @return
+     */
+    @PostMapping("/sys/auth/getAuthClient")
+    CommonResult getAuthClient(@RequestBody @Validated SelAuthClientDto clientDto);
 
     /**
      * 根据角色ID查询权限信息

@@ -1,6 +1,8 @@
 package com.lzlm.cn.controller;
 
 import com.lzlm.cn.dto.auth.AddAuthDto;
+import com.lzlm.cn.dto.auth.SelAuthClientDto;
+import com.lzlm.cn.model.auth.AuthClientDetails;
 import com.lzlm.cn.service.auth.AuthService;
 import com.lzlm.cn.util.CommonResult;
 import com.lzlm.cn.util.Rest;
@@ -51,6 +53,16 @@ public class AuthController {
             return Rest.success("添加成功");
         }
         return Rest.fail("添加失败");
+    }
+
+    @ApiOperation(value = "获取权限认证")
+    @PostMapping("/getAuthClient")
+    public CommonResult getAuthClient(@RequestBody @Validated SelAuthClientDto clientDto){
+        AuthClientDetails clientDetails = authService.getAuthClient(clientDto);
+        if(null != clientDetails){
+            return Rest.successWithData(clientDetails);
+        }
+        return Rest.fail("未查询到权限认证信息");
     }
 
 

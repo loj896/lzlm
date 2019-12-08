@@ -114,6 +114,10 @@
 
                 <db.user>amei</db.user>
                 <db.pwd>PWD</db.pwd>
+
+                <redis.host>47.105.161.199</redis.host>
+                <redis.port>6379</redis.port>
+                <redis.pwd>PWD</redis.pwd>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>

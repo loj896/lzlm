@@ -1,6 +1,7 @@
 package com.lzlm.cn.feign.fallback;
 
 import com.lzlm.cn.dto.auth.AddAuthDto;
+import com.lzlm.cn.dto.auth.SelAuthClientDto;
 import com.lzlm.cn.dto.user.AddUserRoleDto;
 import com.lzlm.cn.dto.user.LoginDto;
 import com.lzlm.cn.feign.SysFeignService;
@@ -45,6 +46,11 @@ public class SysFeignServiceFallImpl implements SysFeignService {
 
     @Override
     public CommonResult addAuth(List<AddAuthDto> authDtoList) {
+        return Rest.fail("查询失败，网路异常");
+    }
+
+    @Override
+    public CommonResult getAuthClient(SelAuthClientDto clientDto) {
         return Rest.fail("查询失败，网路异常");
     }
 

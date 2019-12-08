@@ -1,8 +1,12 @@
 package com.lzlm.cn.service.auth.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.lzlm.cn.dto.auth.AddAuthDto;
+import com.lzlm.cn.dto.auth.SelAuthClientDto;
 import com.lzlm.cn.model.auth.Auth;
+import com.lzlm.cn.model.auth.AuthClientDetails;
+import com.lzlm.cn.service.auth.AuthClientDaoService;
 import com.lzlm.cn.service.auth.AuthDaoService;
 import com.lzlm.cn.service.auth.AuthService;
 import org.springframework.beans.BeanUtils;
@@ -37,6 +41,8 @@ public class AuthServiceImpl implements AuthService {
 
     @Resource
     private AuthDaoService authDaoService;
+    @Resource
+    private AuthClientDaoService authClientDaoService;
 
     @Override
     public boolean addAuth(List<AddAuthDto> authDtoList) {
@@ -52,5 +58,12 @@ public class AuthServiceImpl implements AuthService {
             addList.add(auth);
         }
         return authDaoService.saveBatch(addList);
+    }
+
+    @Override
+    public AuthClientDetails getAuthClient(SelAuthClientDto selAuthClientDto) {
+        QueryWrapper<AuthClientDetails> wrapper = new QueryWrapper<>();
+        wrapper.eq("scope", selAuthClientDto.getScope());
+        return authClientDaoService.getOne(wrapper);
     }
 }

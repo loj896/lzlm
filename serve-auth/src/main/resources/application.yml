@@ -6,7 +6,10 @@ spring:
     locator:
       discovery:
         enabled: true #自动发现
-
+  redis:
+    host: @redis.host@
+    port: @redis.port@
+    password: @redis.pwd@
   boot:
     admin:
       client:

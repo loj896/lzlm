@@ -46,7 +46,7 @@
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
         <!-- 指定数据库表 -->
-        <table schema="" tableName="t_role_auth_rel" domainObjectName="RoleAuthRel"
+        <table schema="" tableName="oauth_client_details" domainObjectName="AuthClientDetails"
                enableInsert="true" enableSelectByExample="false"
                enableDeleteByPrimaryKey="false" enableDeleteByExample="false"
                enableCountByExample="false" enableUpdateByExample="false"
