@@ -1,13 +1,10 @@
-package com.lzlm.cn.config;
+package com.lzlm.cn.config.auth;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
-import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 
 /***
  *                    .::::. 
@@ -31,28 +28,19 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
  */
 @Configuration
 @EnableResourceServer
-public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
-
-    Logger log = LoggerFactory.getLogger(ResourceServerConfig.class);
+public class OAuth2ResourceConfig extends ResourceServerConfigurerAdapter {
 
     @Autowired
-    private CustomAuthEntryPoint customAuthEntryPoint;
+    private CustomAuthenticationEntryPoint customAuthenticationEntryPoint ;
+
     @Autowired
     private CustomAccessDeniedHandler customAccessDeniedHandler;
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http
-                .exceptionHandling().authenticationEntryPoint(customAuthEntryPoint)
-                .and().authorizeRequests()
-                .antMatchers("/oauth/remove_token").permitAll()
-                .anyRequest().authenticated();
-        ;
-    }
-
-    @Override
-    public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
-        super.configure(resources);
-        resources.authenticationEntryPoint(customAuthEntryPoint).accessDeniedHandler(customAccessDeniedHandler);
+        http.exceptionHandling()
+                .authenticationEntryPoint(customAuthenticationEntryPoint)
+                .accessDeniedHandler(customAccessDeniedHandler)
+                .and().requestMatchers().antMatchers("/lzlm/**").and().authorizeRequests().antMatchers("/lzlm/**").authenticated();
     }
 }

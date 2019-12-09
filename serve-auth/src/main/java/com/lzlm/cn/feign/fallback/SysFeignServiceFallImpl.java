@@ -40,7 +40,7 @@ public class SysFeignServiceFallImpl implements SysFeignService {
     }
 
     @Override
-    public CommonResult getUser(LoginDto loginDto) {
+    public CommonResult getUserByPwdAndName(LoginDto loginDto) {
         return Rest.fail("查询失败，网路异常");
     }
 

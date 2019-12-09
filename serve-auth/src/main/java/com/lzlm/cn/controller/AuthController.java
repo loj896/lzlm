@@ -36,7 +36,7 @@ import java.util.List;
  */
 @Api(tags = "权限接口", description = "权限管理")
 @RestController
-@RequestMapping("/sys/auth")
+@RequestMapping("/lzlm/sys/auth")
 public class AuthController {
 
     @Autowired

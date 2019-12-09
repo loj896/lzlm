@@ -38,7 +38,7 @@ import java.util.List;
  */
 @Api(tags = "用户接口", description = "用户管理")
 @RestController
-@RequestMapping("/sys/user")
+@RequestMapping("/lzlm/sys/user")
 public class UserController {
 
     @Resource
@@ -59,9 +59,9 @@ public class UserController {
     }
 
     @ApiOperation(value = "根据用户名和密码查询用户信息")
-    @PostMapping("/getUser")
-    public CommonResult getUser(@RequestBody @Validated LoginDto loginDto){
-        return sysFeignService.getUser(loginDto);
+    @PostMapping("/getUserByPwdAndName")
+    public CommonResult getUserByPwdAndName(@RequestBody @Validated LoginDto loginDto){
+        return sysFeignService.getUserByPwdAndName(loginDto);
     }
 
     @ApiOperation(value = "查询用户权限")

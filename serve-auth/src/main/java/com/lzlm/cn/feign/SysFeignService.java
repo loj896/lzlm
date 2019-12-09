@@ -43,8 +43,8 @@ public interface SysFeignService {
      * @param loginDto
      * @return
      */
-    @PostMapping("/sys/user/getUser")
-    CommonResult getUser(@RequestBody @Validated LoginDto loginDto);
+    @PostMapping("/sys/user/getUserByPwdAndName")
+    CommonResult getUserByPwdAndName(@RequestBody @Validated LoginDto loginDto);
 
     /**
      * 查询用户权限

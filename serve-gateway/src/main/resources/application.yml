@@ -23,7 +23,7 @@ spring:
         - id: lzlm_route
           uri: lb://serve-auth
           predicates:
-          - Path=/lzlm/**
+          - Path=/api_lzlm/**
           filters:
           - StripPrefix=1
 server:
