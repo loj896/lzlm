@@ -8,6 +8,7 @@ import com.lzlm.cn.service.role.RoleAuthService;
 import com.lzlm.cn.service.role.RoleService;
 import com.lzlm.cn.util.CommonResult;
 import com.lzlm.cn.util.Rest;
+import com.lzlm.cn.util.group.AddGroup;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -49,7 +50,7 @@ public class RoleController {
 
     @ApiOperation(value = "添加角色")
     @PostMapping("/addRole")
-    public CommonResult addRole(@RequestBody @Validated List<AddRoleDto> roleDtoList){
+    public CommonResult addRole(@RequestBody @Validated(value = AddGroup.class) List<AddRoleDto> roleDtoList){
         boolean addResult = roleService.addRole(roleDtoList);
         if(addResult){
             return Rest.success("添加成功");
@@ -59,7 +60,7 @@ public class RoleController {
 
     @ApiOperation(value = "添加角色权限")
     @PostMapping("/addRoleAuth")
-    public CommonResult addRoleAuth(@RequestBody @Validated List<AddRoleAuthDto> roleAuthDtoList){
+    public CommonResult addRoleAuth(@RequestBody @Validated(value = AddGroup.class) List<AddRoleAuthDto> roleAuthDtoList){
         boolean addResult = roleAuthService.addRoleAuth(roleAuthDtoList);
         if(addResult){
             return Rest.success("添加成功");

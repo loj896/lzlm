@@ -1,7 +1,7 @@
 package com.lzlm.cn.controller;
 
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
-import com.lzlm.cn.dto.user.AddUserRoleDto;
+import com.lzlm.cn.dto.user.AddUserRoleListDto;
 import com.lzlm.cn.dto.user.LoginDto;
 import com.lzlm.cn.dto.user.UserAuthDto;
 import com.lzlm.cn.dto.user.UserRoleDto;
@@ -9,6 +9,8 @@ import com.lzlm.cn.model.user.User;
 import com.lzlm.cn.service.user.UserService;
 import com.lzlm.cn.util.CommonResult;
 import com.lzlm.cn.util.Rest;
+import com.lzlm.cn.util.group.AddGroup;
+import com.lzlm.cn.util.group.SelGroup;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -48,7 +50,7 @@ public class UserController {
 
     @ApiOperation(value = "根据用户名和密码查询用户信息")
     @PostMapping("/getUserByPwdAndName")
-    public CommonResult getUserByPwdAndName(@RequestBody @Validated LoginDto loginDto){
+    public CommonResult getUserByPwdAndName(@RequestBody @Validated(value = SelGroup.class) LoginDto loginDto){
         User user = userService.getUserByPwdAndName(loginDto);
         if(null != user){
             return Rest.successWithData(user);
@@ -69,8 +71,8 @@ public class UserController {
 
     @ApiOperation(value = "新增用户角色")
     @PostMapping("/addUserRole")
-    public CommonResult addUserRole(@RequestBody @Validated List<AddUserRoleDto> userRoleDtoList){
-        boolean addResult = userService.addUserRole(userRoleDtoList);
+    public CommonResult addUserRole(@RequestBody @Validated(value = AddGroup.class) AddUserRoleListDto roleListDto){
+        boolean addResult = userService.addUserRole(roleListDto.getAddRoleList());
         if(addResult){
             return Rest.success("添加成功");
         }

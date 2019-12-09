@@ -1,16 +1,16 @@
 package com.lzlm.cn.feign;
 
-import com.lzlm.cn.dto.auth.AddAuthDto;
+import com.lzlm.cn.dto.auth.AddAuthListDto;
 import com.lzlm.cn.dto.auth.SelAuthClientDto;
-import com.lzlm.cn.dto.user.AddUserRoleDto;
+import com.lzlm.cn.dto.user.AddUserRoleListDto;
 import com.lzlm.cn.dto.user.LoginDto;
 import com.lzlm.cn.feign.fallback.SysFeignServiceFallImpl;
 import com.lzlm.cn.util.CommonResult;
+import com.lzlm.cn.util.group.AddGroup;
+import com.lzlm.cn.util.group.SelGroup;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /***
  *                    .::::. 
@@ -44,7 +44,7 @@ public interface SysFeignService {
      * @return
      */
     @PostMapping("/sys/user/getUserByPwdAndName")
-    CommonResult getUserByPwdAndName(@RequestBody @Validated LoginDto loginDto);
+    CommonResult getUserByPwdAndName(@RequestBody @Validated(value = SelGroup.class) LoginDto loginDto);
 
     /**
      * 查询用户权限
@@ -56,11 +56,11 @@ public interface SysFeignService {
 
     /**
      * 新增用户角色
-     * @param userRoleDtoList
+     * @param roleListDto
      * @return
      */
     @PostMapping("/sys/user/addUserRole")
-    CommonResult addUserRole(@RequestBody @Validated List<AddUserRoleDto> userRoleDtoList);
+    CommonResult addUserRole(@RequestBody @Validated(value = AddGroup.class) AddUserRoleListDto roleListDto);
 
     /**
      * 查询用户角色
@@ -76,7 +76,7 @@ public interface SysFeignService {
      * @return
      */
     @PostMapping("/sys/auth/addAuth")
-    CommonResult addAuth(@RequestBody @Validated List<AddAuthDto> authDtoList);
+    CommonResult addAuth(@RequestBody @Validated(value = AddGroup.class) AddAuthListDto authDtoList);
 
     /**
      * 查询权限认证信息
@@ -84,7 +84,7 @@ public interface SysFeignService {
      * @return
      */
     @PostMapping("/sys/auth/getAuthClient")
-    CommonResult getAuthClient(@RequestBody @Validated SelAuthClientDto clientDto);
+    CommonResult getAuthClient(@RequestBody @Validated(value = SelGroup.class) SelAuthClientDto clientDto);
 
     /**
      * 根据角色ID查询权限信息

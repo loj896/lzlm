@@ -41,6 +41,8 @@ public class OAuth2ResourceConfig extends ResourceServerConfigurerAdapter {
         http.exceptionHandling()
                 .authenticationEntryPoint(customAuthenticationEntryPoint)
                 .accessDeniedHandler(customAccessDeniedHandler)
-                .and().requestMatchers().antMatchers("/lzlm/**").and().authorizeRequests().antMatchers("/lzlm/**").authenticated();
+                .and().requestMatchers().antMatchers("/lzlm/**")
+                .and().authorizeRequests().antMatchers("/lzlm/**")
+                .authenticated();
     }
 }
