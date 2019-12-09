@@ -38,6 +38,13 @@ public interface UserService {
     User getUserByPwdAndName(LoginDto loginDto);
 
     /**
+     * 根据用户名查询用户
+     * @param userName
+     * @return
+     */
+    User getUserByUserName(String userName);
+
+    /**
      * 添加用户角色
      * @param userRoleDtoList
      * @return

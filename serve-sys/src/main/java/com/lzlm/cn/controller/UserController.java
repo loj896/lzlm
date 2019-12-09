@@ -58,6 +58,17 @@ public class UserController {
         return Rest.fail("未查询到用户信息");
     }
 
+    @ApiOperation(value = "根据用户名查询用户信息")
+    @PostMapping("/getUserByUserName")
+    @ApiImplicitParam(name = "userName", value = "用户名", required = true, dataType = "String", paramType = "query")
+    public CommonResult getUserByUserName(@RequestParam("userName") String userName){
+        User user = userService.getUserByUserName(userName);
+        if(null != user){
+            return Rest.successWithData(user);
+        }
+        return Rest.fail("未查询到用户信息");
+    }
+
     @ApiOperation(value = "查询用户权限")
     @PostMapping("/getUserAuth")
     @ApiImplicitParam(name = "userId", value = "用户ID", required = true, dataType = "String", paramType = "query")

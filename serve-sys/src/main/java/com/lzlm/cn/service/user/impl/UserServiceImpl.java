@@ -51,6 +51,15 @@ public class UserServiceImpl implements UserService {
         QueryWrapper<User> wrapper = new QueryWrapper<>();
         wrapper.eq("user_name", loginDto.getUserName());
         wrapper.eq("password", loginDto.getPassword());
+        wrapper.eq("user_status", "1");
+        return userDaoService.getOne(wrapper);
+    }
+
+    @Override
+    public User getUserByUserName(String userName) {
+        QueryWrapper<User> wrapper = new QueryWrapper<>();
+        wrapper.eq("user_name", userName);
+        wrapper.eq("user_status", "1");
         return userDaoService.getOne(wrapper);
     }
 

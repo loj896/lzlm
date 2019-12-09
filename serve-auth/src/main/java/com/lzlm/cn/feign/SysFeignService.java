@@ -47,6 +47,14 @@ public interface SysFeignService {
     CommonResult getUserByPwdAndName(@RequestBody @Validated(value = SelGroup.class) LoginDto loginDto);
 
     /**
+     * 根据用户名查询用户信息
+     * @param userName
+     * @return
+     */
+    @PostMapping("/sys/user/getUserByUserName")
+    CommonResult getUserByUserName(@RequestParam("userName") String userName);
+
+    /**
      * 查询用户权限
      * @param userId
      * @return

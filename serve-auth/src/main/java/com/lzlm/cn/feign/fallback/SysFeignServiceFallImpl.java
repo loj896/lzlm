@@ -43,6 +43,11 @@ public class SysFeignServiceFallImpl implements SysFeignService {
     }
 
     @Override
+    public CommonResult getUserByUserName(String userName) {
+        return Rest.fail("根据用户名查询用户失败，网路异常");
+    }
+
+    @Override
     public CommonResult addAuth(AddAuthListDto authDtoList) {
         return Rest.fail("添加权限失败，网路异常");
     }

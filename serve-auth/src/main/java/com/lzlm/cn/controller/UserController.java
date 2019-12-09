@@ -84,11 +84,4 @@ public class UserController {
         return sysFeignService.getUserRole(userId);
     }
 
-    @ApiOperation(value = "用户登录")
-    @PostMapping("/login")
-    public CommonResult login(@RequestBody @Validated LoginDto loginDto){
-
-
-        return null;
-    }
 }
