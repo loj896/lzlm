@@ -6,6 +6,16 @@ spring:
     locator:
       discovery:
         enabled: true #自动发现
+  redis:
+    host: @redis.host@
+    port: @redis.port@
+    password: @redis.pwd@
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+    timeout: 100ms
   boot:
     admin:
       client:
@@ -46,4 +56,18 @@ logging:
   level:
     root: info
     com.lzlm.cn: debug
+
+security:
+  oauth2:
+    client:
+      # serve-sys:sys-secret-8888   c2VydmUtc3lzOnN5cy1zZWNyZXQtODg4OA==
+      client-id: serve-sys
+      client-secret: sys-secret-8888
+      user-authorization-uri: @auth.url@/oauth/authorize
+      access-token-uri: @auth.url@/oauth/token
+    resource:
+      id: serve-sys
+      user-info-uri: sys-info
+    authorization:
+      check-token-access: @auth.url@/oauth/check_token
 

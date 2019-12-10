@@ -112,6 +112,7 @@
                 <serve.sys.port>9701</serve.sys.port>
                 <serve.plan.port>9702</serve.plan.port>
                 <serve.auth.port>9801</serve.auth.port>
+                <auth.url>http://localhost:9801</auth.url>
                 <serve.gateway.port>9901</serve.gateway.port>
 
                 <db.user>amei</db.user>

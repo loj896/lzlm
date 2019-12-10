@@ -11,6 +11,7 @@ import com.lzlm.cn.util.group.SelGroup;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -47,6 +48,7 @@ public class AuthController {
 
     @ApiOperation(value = "添加权限")
     @PostMapping("/addAuth")
+    @PreAuthorize("hasAnyRole('1001')")
     public CommonResult addAuth(@RequestBody @Validated(value = AddGroup.class) AddAuthListDto authDtoList){
         boolean addResult = authService.addAuth(authDtoList.getAddAuthDtoList());
         if(addResult){
