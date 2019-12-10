@@ -36,7 +36,7 @@ import javax.annotation.Resource;
  * ```` ':.          ':::::::::'                  ::::.. 
  *                    '.:::::'                    ':'````.. 
  */
-@Api(tags = "用户接口", description = "用户管理")
+@Api(tags = "系统用户接口", description = "系统用户管理")
 @RestController
 @RequestMapping("/lzlm/sys/user")
 public class UserController {

@@ -39,7 +39,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Api(tags = "权限接口", description = "权限管理")
 @RestController
-@RequestMapping("/sys/auth")
+@RequestMapping("/auth")
 public class AuthController {
 
     @Autowired

@@ -1,9 +1,11 @@
 package com.lzlm.cn.controller;
 
-import com.lzlm.cn.dto.auth.AddAuthListDto;
-import com.lzlm.cn.feign.SysFeignService;
+import com.lzlm.cn.dto.plan.AddPlanDto;
+import com.lzlm.cn.dto.plan.SelPlanDto;
+import com.lzlm.cn.feign.PlanFeignService;
 import com.lzlm.cn.util.CommonResult;
 import com.lzlm.cn.util.group.AddGroup;
+import com.lzlm.cn.util.group.SelGroup;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,17 +35,24 @@ import org.springframework.web.bind.annotation.RestController;
  * ```` ':.          ':::::::::'                  ::::.. 
  *                    '.:::::'                    ':'````.. 
  */
-@Api(tags = "系统权限接口", description = "系统权限管理")
+@Api(tags = "计划接口", description = "计划任务管理")
 @RestController
-@RequestMapping("/lzlm/sys/auth")
-public class AuthController {
+@RequestMapping("/lzlm/plan/plan")
+public class PlanController {
 
     @Autowired
-    private SysFeignService sysFeignService;
+    private PlanFeignService planFeignService;
 
-    @ApiOperation(value = "添加权限")
-    @PostMapping("/addAuth")
-    public CommonResult addAuth(@RequestBody @Validated(value = AddGroup.class) AddAuthListDto authDtoList){
-        return sysFeignService.addAuth(authDtoList);
+    @ApiOperation(value = "添加计划")
+    @PostMapping("/addPlan")
+    public CommonResult addPlan(@RequestBody @Validated(value = AddGroup.class) AddPlanDto planDto){
+        return planFeignService.addPlan(planDto);
     }
+
+    @ApiOperation(value = "查询计划信息")
+    @PostMapping("/getPlanList")
+    public CommonResult getPlanList(@RequestBody @Validated(value = SelGroup.class) SelPlanDto planDto){
+        return planFeignService.getPlanList(planDto);
+    }
+
 }

@@ -35,7 +35,7 @@ import org.springframework.web.bind.annotation.*;
 @FeignClient(value = "serve-sys", fallback = SysFeignServiceFallImpl.class)
 public interface SysFeignService {
 
-    @GetMapping("/sys/user/hello/{name}")
+    @GetMapping("/user/hello/{name}")
     String hello(@PathVariable(name = "name") String name);
 
     /**
@@ -43,7 +43,7 @@ public interface SysFeignService {
      * @param loginDto
      * @return
      */
-    @PostMapping("/sys/user/getUserByPwdAndName")
+    @PostMapping("/user/getUserByPwdAndName")
     CommonResult getUserByPwdAndName(@RequestBody @Validated(value = SelGroup.class) LoginDto loginDto);
 
     /**
@@ -51,7 +51,7 @@ public interface SysFeignService {
      * @param userName
      * @return
      */
-    @PostMapping("/sys/user/getUserByUserName")
+    @PostMapping("/user/getUserByUserName")
     CommonResult getUserByUserName(@RequestParam("userName") String userName);
 
     /**
@@ -59,7 +59,7 @@ public interface SysFeignService {
      * @param userId
      * @return
      */
-    @PostMapping("/sys/user/getUserAuth")
+    @PostMapping("/user/getUserAuth")
     CommonResult getUserAuth(@RequestParam("userId") String userId);
 
     /**
@@ -67,7 +67,7 @@ public interface SysFeignService {
      * @param roleListDto
      * @return
      */
-    @PostMapping("/sys/user/addUserRole")
+    @PostMapping("/user/addUserRole")
     CommonResult addUserRole(@RequestBody @Validated(value = AddGroup.class) AddUserRoleListDto roleListDto);
 
     /**
@@ -75,7 +75,7 @@ public interface SysFeignService {
      * @param userId
      * @return
      */
-    @PostMapping("/sys/user/getUserRole")
+    @PostMapping("/user/getUserRole")
     CommonResult getUserRole(@RequestParam("userId") String userId);
 
     /**
@@ -83,7 +83,7 @@ public interface SysFeignService {
      * @param authDtoList
      * @return
      */
-    @PostMapping("/sys/auth/addAuth")
+    @PostMapping("/auth/addAuth")
     CommonResult addAuth(@RequestBody @Validated(value = AddGroup.class) AddAuthListDto authDtoList);
 
     /**
@@ -91,7 +91,7 @@ public interface SysFeignService {
      * @param clientDto
      * @return
      */
-    @PostMapping("/sys/auth/getAuthClient")
+    @PostMapping("/auth/getAuthClient")
     CommonResult getAuthClient(@RequestBody @Validated(value = SelGroup.class) SelAuthClientDto clientDto);
 
     /**
@@ -99,7 +99,7 @@ public interface SysFeignService {
      * @param roleId
      * @return
      */
-    @PostMapping("/sys/role/getAuthByRoleId")
+    @PostMapping("/role/getAuthByRoleId")
     CommonResult getAuthByRoleId(@RequestParam("roleId") String roleId);
 
 }

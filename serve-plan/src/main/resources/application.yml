@@ -1,21 +1,11 @@
 spring:
   application:
-    name: serve-auth
+    name: serve-plan
   zipkin:
     # base-url: @zipkin.url@  #若在同一个注册中心的话可以启用自动发现，省略base-url
     locator:
       discovery:
         enabled: true #自动发现
-  redis:
-    host: @redis.host@
-    port: @redis.port@
-    password: @redis.pwd@
-    jedis:
-      pool:
-        max-active: 8
-        max-idle: 8
-        min-idle: 0
-    timeout: 100ms
   boot:
     admin:
       client:
@@ -25,22 +15,35 @@ spring:
     url: jdbc:mysql://47.105.161.199:3306/mydb?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true
     username: @db.user@
     password: @db.pwd@
-    # 默认数据库连接池
-    hikari:
-      connection-timeout: 30000
-      idle-timeout: 600000
-      max-lifetime: 1800000
-      maximum-pool-size: 9
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*.xml
+  type-aliases-package: com.lzlm.cn.model.*.*
+  global-config:
+    db-config:
+      db-type: mysql
+      id-type: uuid
+      field-strategy: not_null
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      table-underline: true
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    call-setters-on-nulls: true
+
 server:
-  port: @serve.auth.port@
+  port: @serve.plan.port@
+
 eureka:
   client:
     service-url:
       # Eureka注册中心连接地址
       # 如果注册中心地址配置的域名，这里使用 http://域名/eureka/ 格式
       defaultZone: @eureka.url@
-feign:
-  hystrix:
-    # 开启Feign的Hystrix熔断器支持
-    enabled: true
+
+logging:
+  level:
+    root: info
+    com.lzlm.cn: debug
 

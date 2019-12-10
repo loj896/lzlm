@@ -42,7 +42,7 @@ import java.util.List;
  */
 @Api(tags = "用户接口", description = "用户管理")
 @RestController
-@RequestMapping("/sys/user")
+@RequestMapping("/user")
 public class UserController {
 
     @Resource

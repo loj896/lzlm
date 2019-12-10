@@ -23,7 +23,7 @@ package com.lzlm.cn.dto.user;
 public class UserRoleDto {
 
     /**
-     * 用户权限ID
+     * 用户角色ID
      */
     private String userRoleId;
 
@@ -36,6 +36,11 @@ public class UserRoleDto {
      * 角色ID
      */
     private String roleId;
+
+    /**
+     * 角色代码
+     */
+    private String roleCode;
 
     /**
      * 角色名称
@@ -64,6 +69,14 @@ public class UserRoleDto {
 
     public void setRoleId(String roleId) {
         this.roleId = roleId;
+    }
+
+    public String getRoleCode() {
+        return roleCode;
+    }
+
+    public void setRoleCode(String roleCode) {
+        this.roleCode = roleCode;
     }
 
     public String getRoleName() {

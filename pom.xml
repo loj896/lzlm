@@ -17,6 +17,7 @@
         <module>serve-gateway</module>
         <module>serve-auth</module>
         <module>serve-zipkin</module>
+        <module>serve-plan</module>
     </modules>
 
     <name>lzlm</name>
@@ -109,6 +110,7 @@
                 <admin.url>http://localhost:9603</admin.url>
 
                 <serve.sys.port>9701</serve.sys.port>
+                <serve.plan.port>9702</serve.plan.port>
                 <serve.auth.port>9801</serve.auth.port>
                 <serve.gateway.port>9901</serve.gateway.port>
 
