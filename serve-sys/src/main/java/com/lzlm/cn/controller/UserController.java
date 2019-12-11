@@ -1,6 +1,7 @@
 package com.lzlm.cn.controller;
 
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
+import com.lzlm.cn.amq.RabbitmqSender;
 import com.lzlm.cn.dto.user.AddUserRoleListDto;
 import com.lzlm.cn.dto.user.LoginDto;
 import com.lzlm.cn.dto.user.UserAuthDto;
@@ -14,11 +15,15 @@ import com.lzlm.cn.util.group.SelGroup;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import org.apache.http.client.utils.DateUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /***
  *                    .::::. 
@@ -47,6 +52,8 @@ public class UserController {
 
     @Resource
     private UserService userService;
+    @Resource
+    private RabbitmqSender rabbitmqSender;
 
     @ApiOperation(value = "根据用户名和密码查询用户信息")
     @PostMapping("/getUserByPwdAndName")
@@ -99,5 +106,26 @@ public class UserController {
             return Rest.fail("未查询到用户角色信息");
         }
         return Rest.successWithData(userRoleDtoList);
+    }
+
+    @ApiOperation(value = "消息队列发送消息测试")
+    @PostMapping("/sendMsgTest")
+    public CommonResult sendMsgTest() {
+        Long id = 1L;
+        while(id<20){
+            try {
+                Thread.sleep(1000);
+                Map<String, Object> properties = new HashMap<String, Object>();
+                properties.put("SERIAL_NUMBER", "12345");
+                properties.put("BANK_NUMBER", "abc");
+                properties.put("PLAT_SEND_TIME", DateUtils.formatDate(new Date(), "yyyy-MM-dd HH:mm:ss.SSS"));
+                rabbitmqSender.sendMessage("Hello, I am amqp sender num :" + id, properties);
+            } catch (Exception e) {
+                System.out.println("--------error-------");
+                e.printStackTrace();
+            }
+            id++;
+        }
+        return Rest.success();
     }
 }

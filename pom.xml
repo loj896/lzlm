@@ -18,6 +18,7 @@
         <module>serve-auth</module>
         <module>serve-zipkin</module>
         <module>serve-plan</module>
+        <module>serve-amq-consumer</module>
     </modules>
 
     <name>lzlm</name>
@@ -112,6 +113,7 @@
                 <serve.sys.port>9701</serve.sys.port>
                 <serve.plan.port>9702</serve.plan.port>
                 <serve.auth.port>9801</serve.auth.port>
+                <serve.mq.port>9802</serve.mq.port>
                 <auth.url>http://localhost:9801</auth.url>
                 <serve.gateway.port>9901</serve.gateway.port>
 
@@ -121,6 +123,10 @@
                 <redis.host>47.105.161.199</redis.host>
                 <redis.port>6379</redis.port>
                 <redis.pwd>PWD</redis.pwd>
+
+                <rabbitmq.host>47.105.161.199</rabbitmq.host>
+                <rabbitmq.user>mquser</rabbitmq.user>
+                <rabbitmq.pwd>PWD</rabbitmq.pwd>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
