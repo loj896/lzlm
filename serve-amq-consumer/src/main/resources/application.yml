@@ -1,6 +1,6 @@
 spring:
   application:
-    name: serve-sys
+    name: serve-amq-consumer
   zipkin:
     # base-url: @zipkin.url@  #若在同一个注册中心的话可以启用自动发现，省略base-url
     locator:
@@ -25,28 +25,29 @@ spring:
   cloud:
     stream:
       bindings:
-        output_channel:
+        input_channel:
           destination: exchange-3
           group: queue-3              # group相当于RabbitMQ中Queue的名称
-
-mybatis-plus:
-  mapper-locations: classpath*:mapper/**/*.xml
-  type-aliases-package: com.lzlm.cn.model.*.*
-  global-config:
-    db-config:
-      db-type: mysql
-      id-type: uuid
-      field-strategy: not_null
-      logic-delete-value: 1
-      logic-not-delete-value: 0
-      table-underline: true
-  configuration:
-    map-underscore-to-camel-case: true
-    cache-enabled: false
-    call-setters-on-nulls: true
+          consumer:
+            ##默认监听数
+            concurrency: 1
+      rabbit:
+        bindings:
+          input_channel:
+            consumer:
+              ##针对消费端channel进行设置，是否支持requeue，重回队列
+              requeue-rejected: false
+              ##是否支持签收，签收模式：手工签收
+              acknowledge-mode: MANUAL
+              ##服务重连
+              recovery-interval: 3000
+              ##是否持久化订阅
+              durable-subscription: true
+              ## 最大监听数
+              max-concurrency: 5
 
 server:
-  port: @serve.sys.port@
+  port: @serve.mq.port@
 
 eureka:
   client:

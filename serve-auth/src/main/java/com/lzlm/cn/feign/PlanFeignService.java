@@ -2,7 +2,7 @@ package com.lzlm.cn.feign;
 
 import com.lzlm.cn.dto.plan.AddPlanDto;
 import com.lzlm.cn.dto.plan.SelPlanDto;
-import com.lzlm.cn.feign.fallback.SysFeignServiceFallImpl;
+import com.lzlm.cn.feign.fallback.PlanFeignServiceImpl;
 import com.lzlm.cn.util.CommonResult;
 import com.lzlm.cn.util.group.AddGroup;
 import com.lzlm.cn.util.group.SelGroup;
@@ -31,7 +31,7 @@ import org.springframework.web.bind.annotation.RequestBody;
  * ```` ':.          ':::::::::'                  ::::.. 
  *                    '.:::::'                    ':'````.. 
  */
-@FeignClient(value = "serve-plan", fallback = SysFeignServiceFallImpl.class)
+@FeignClient(value = "serve-plan", fallback = PlanFeignServiceImpl.class)
 public interface PlanFeignService {
 
     /**

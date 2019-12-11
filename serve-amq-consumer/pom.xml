@@ -9,9 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>serve-plan</artifactId>
+    <artifactId>serve-amq-consumer</artifactId>
 
-    <name>serve-plan</name>
+    <name>serve-amq-consumer</name>
     <packaging>jar</packaging>
 
     <dependencies>
